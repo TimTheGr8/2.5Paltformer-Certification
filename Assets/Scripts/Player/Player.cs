@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     private float _jumpHeight = 20.0f;
 
     private CharacterController _controller;
+    private Animator _anim;
     private float _walk = 0.0f;
     private Vector3 _direction;
     private Vector3 _velocity;
@@ -25,6 +26,9 @@ public class Player : MonoBehaviour
         _controller = GetComponent<CharacterController>();
         if (_controller == null)
             Debug.LogError("There is no Character Controller on the Player.");
+        _anim = GetComponentInChildren<Animator>();
+        if (_anim == null)
+            Debug.LogError("There is no Animator on the Player.");
     }
 
     void FixedUpdate()
@@ -62,5 +66,9 @@ public class Player : MonoBehaviour
     public void SetWalk(float walk)
     {
         _walk = walk;
+        if (walk == 0)
+            _anim.SetBool("IsWalking", false);
+        else
+            _anim.SetBool("IsWalking", true);
     }
 }
