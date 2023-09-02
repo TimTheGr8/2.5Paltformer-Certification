@@ -19,7 +19,8 @@ public class Player : MonoBehaviour
     private Vector3 _direction;
     private Vector3 _velocity;
     private float _yVelocity = 0.0f;
-    private int _jumpCount = 0;
+    private float _yRotation = 0;
+    private bool _jumping = true;
 
     void Start()
     {
@@ -39,36 +40,45 @@ public class Player : MonoBehaviour
     private void CalculateMovement()
     {
         if (!_controller.isGrounded)
+        {
             _yVelocity -= _gravity;
+            if (!_jumping)
+            {
+                _jumping = true;
+                _anim.SetBool("Jumping", _jumping);
+            }
+        }
 
-        if(_controller.isGrounded)
+        if (_controller.isGrounded)
         {
             _direction = new Vector3(0, 0, _walk);
-            _jumpCount = 0;
             _velocity = _direction * _speed;
+            if (_jumping)
+            {
+                _jumping = false;
+                _anim.SetBool("Jumping", _jumping);
+            }
         }
+        transform.eulerAngles = new Vector3(0, _yRotation, 0);
         _velocity.y = _yVelocity;
         _controller.Move(_velocity * Time.deltaTime);
     }
 
     public void Jump()
     {
-        if (_jumpCount < 1)
+        if (_controller.isGrounded)
         {
-            _jumpCount++;
-            if (_jumpCount == 1)
-                _yVelocity = _jumpHeight;
-            if (_jumpCount == 2)
-                _yVelocity += _jumpHeight;
+            _yVelocity = _jumpHeight;
         }
     }
 
     public void SetWalk(float walk)
     {
         _walk = walk;
-        if (walk == 0)
-            _anim.SetBool("IsWalking", false);
-        else
-            _anim.SetBool("IsWalking", true);
+        if (walk == 1)
+            _yRotation = 0;
+        if (walk == -1)
+            _yRotation = 180;
+        _anim.SetFloat("Speed", Mathf.Abs(_walk));
     }
 }
