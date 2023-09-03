@@ -81,4 +81,11 @@ public class Player : MonoBehaviour
             _yRotation = 180;
         _anim.SetFloat("Speed", Mathf.Abs(_walk));
     }
+
+    public void GrabLedge(Vector3 handPosition)
+    {
+        _anim.SetBool("LedgeGrab", true);
+        _controller.enabled = false;
+        transform.position = handPosition;
+    }
 }
