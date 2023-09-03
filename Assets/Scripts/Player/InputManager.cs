@@ -25,6 +25,12 @@ public class InputManager : MonoBehaviour
         _inputs.Player.Move.performed += Move_performed;
         _inputs.Player.Move.canceled += Move_canceled;
         _inputs.Player.Jump.performed += Jump_performed;
+        _inputs.Player.ClimbLedge.performed += ClimbLedge_performed;
+    }
+
+    private void ClimbLedge_performed(InputAction.CallbackContext context)
+    {
+        _player.ClimbLedge();
     }
 
     private void Jump_performed(InputAction.CallbackContext context)

@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
     private float _yVelocity = 0.0f;
     private float _yRotation = 0;
     private bool _jumping = true;
+    private bool _onLedge = false;
+    private Ledge _activeLedge;
 
     void Start()
     {
@@ -82,10 +84,27 @@ public class Player : MonoBehaviour
         _anim.SetFloat("Speed", Mathf.Abs(_walk));
     }
 
-    public void GrabLedge(Vector3 handPosition)
+    public void GrabLedge(Vector3 handPosition, Ledge currentLedge)
     {
         _anim.SetBool("LedgeGrab", true);
+        _onLedge = true;
         _controller.enabled = false;
         transform.position = handPosition;
+        _anim.SetBool("Jumping", false);
+        _activeLedge = currentLedge;
+    }
+
+    public void ClimbLedge()
+    {
+        if(_onLedge)
+            _anim.SetTrigger("ClimbLedge");
+    }
+
+    public void ClimbComplete()
+    {
+        transform.position = _activeLedge.GetStandPos();
+        _anim.SetBool("LedgeGrab", false);
+        _onLedge = false;
+        _controller.enabled = true;
     }
 }

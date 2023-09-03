@@ -6,6 +6,8 @@ public class Ledge : MonoBehaviour
 {
     [SerializeField]
     private Vector3 _handPosition;
+    [SerializeField]
+    private Vector3 _standPos;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,10 +16,13 @@ public class Ledge : MonoBehaviour
             Player player = other.GetComponentInParent<Player>();
             if(player != null)
             {
-                Debug.Log("Grab Ledge");
-                player.GrabLedge(_handPosition);
+                player.GrabLedge(_handPosition, this);
             }
         }
     }
 
+    public Vector3 GetStandPos()
+    {
+        return _standPos;
+    }
 }
