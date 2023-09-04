@@ -5,9 +5,9 @@ using UnityEngine;
 public class Ledge : MonoBehaviour
 {
     [SerializeField]
-    private Vector3 _handPosition;
+    private Transform _handPosition;
     [SerializeField]
-    private Vector3 _standPos;
+    private Transform _standPosition;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -16,13 +16,13 @@ public class Ledge : MonoBehaviour
             Player player = other.GetComponentInParent<Player>();
             if(player != null)
             {
-                player.GrabLedge(_handPosition, this);
+                player.GrabLedge(_handPosition.position, this);
             }
         }
     }
 
     public Vector3 GetStandPos()
     {
-        return _standPos;
+        return _standPosition.position;
     }
 }
