@@ -33,9 +33,7 @@ public class SwitchController : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            UIManager.Instance.ActivateInteractText(false);
-            InputManager.Instance.AssignSwitch(null);
-            _canInteract = false;
+            Name();
         }
     }
 
@@ -45,6 +43,16 @@ public class SwitchController : MonoBehaviour
         {
             _renderer.material = _liftActivatedColor;
             _lift.Activate();
+            BoxCollider col = GetComponent<BoxCollider>();
+            Destroy(col);
+            Name();
         }
+    }
+
+    private void Name()
+    {
+        UIManager.Instance.ActivateInteractText(false);
+        InputManager.Instance.AssignSwitch(null);
+        _canInteract = false;
     }
 }
