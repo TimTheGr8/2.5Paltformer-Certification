@@ -19,6 +19,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]
     private GameObject _interactionText;
+    [SerializeField]
+    private TMP_Text _scoreText;
 
     private void Awake()
     {
@@ -28,5 +30,10 @@ public class UIManager : MonoBehaviour
     public void ActivateInteractText(bool isActive)
     {
         _interactionText.SetActive(isActive);
+    }
+
+    public void UpdateScoreText(int score)
+    {
+        _scoreText.text = $"Score: {score}";
     }
 }

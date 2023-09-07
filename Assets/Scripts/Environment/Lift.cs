@@ -14,7 +14,6 @@ public class Lift : MonoBehaviour
     private float _waitTimeOnFloor = 5.0f;
 
     private Transform _currentTarget;
-    [SerializeField]
     private int _currentIndex = 0;
     private bool _waiting = false;
     private bool _active = false;

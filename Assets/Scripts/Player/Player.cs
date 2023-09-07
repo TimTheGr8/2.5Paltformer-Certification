@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
 
     private CharacterController _controller;
     private Animator _anim;
+    private int _score = 0;
     private float _walk = 0.0f;
     private Vector3 _direction;
     private Vector3 _velocity;
@@ -106,5 +107,11 @@ public class Player : MonoBehaviour
         _anim.SetBool("LedgeGrab", false);
         _onLedge = false;
         _controller.enabled = true;
+    }
+
+    public void AdjustScore(int score)
+    {
+        _score += score;
+        UIManager.Instance.UpdateScoreText(_score);
     }
 }
