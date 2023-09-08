@@ -124,7 +124,7 @@ public class Player : MonoBehaviour
 
     public void Roll()
     {
-        if(_controller.isGrounded && !_jumping)
+        if(_controller.isGrounded && !_jumping && Mathf.Abs(_walk) > 0f)
         {
             _rolling = true;
             _anim.SetTrigger("Roll");
@@ -134,10 +134,7 @@ public class Player : MonoBehaviour
     public void RollComplete()
     {
         _rolling = false;
-        /////////////////// Fix this to work with user holding button during the roll.\\\\\\\\\\\\\\\\\\\
-        //_walk = 0;
         SetWalk(_rollWalk);
-        //_anim.SetFloat("Speed", Mathf.Abs(_walk));
     }
 
     public void AdjustScore(int score)

@@ -5952,6 +5952,144 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 986222742}
   m_Mesh: {fileID: 8842562430849407456, guid: 3a181dc50fe9546a18eb2f76420fd828, type: 3}
+--- !u!1001 &1003083949
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 100000, guid: 6bd6539edfd490c4990eb2ce54d87945, type: 3}
+      propertyPath: m_Name
+      value: Ladder (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 6bd6539edfd490c4990eb2ce54d87945, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 6bd6539edfd490c4990eb2ce54d87945, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 6bd6539edfd490c4990eb2ce54d87945, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 6bd6539edfd490c4990eb2ce54d87945, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 6bd6539edfd490c4990eb2ce54d87945, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 64.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 6bd6539edfd490c4990eb2ce54d87945, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 84.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 6bd6539edfd490c4990eb2ce54d87945, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7299491
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 6bd6539edfd490c4990eb2ce54d87945, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 6bd6539edfd490c4990eb2ce54d87945, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.68350154
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 6bd6539edfd490c4990eb2ce54d87945, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 6bd6539edfd490c4990eb2ce54d87945, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 6bd6539edfd490c4990eb2ce54d87945, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 86.236
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 6bd6539edfd490c4990eb2ce54d87945, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6bd6539edfd490c4990eb2ce54d87945, type: 3}
+--- !u!1001 &1005657181
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 100000, guid: 6bd6539edfd490c4990eb2ce54d87945, type: 3}
+      propertyPath: m_Name
+      value: Ladder
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 6bd6539edfd490c4990eb2ce54d87945, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 6bd6539edfd490c4990eb2ce54d87945, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 6bd6539edfd490c4990eb2ce54d87945, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 6bd6539edfd490c4990eb2ce54d87945, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 6bd6539edfd490c4990eb2ce54d87945, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 57.13263
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 6bd6539edfd490c4990eb2ce54d87945, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 84.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 6bd6539edfd490c4990eb2ce54d87945, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7299491
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 6bd6539edfd490c4990eb2ce54d87945, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 6bd6539edfd490c4990eb2ce54d87945, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.68350154
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 6bd6539edfd490c4990eb2ce54d87945, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 6bd6539edfd490c4990eb2ce54d87945, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 6bd6539edfd490c4990eb2ce54d87945, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 86.236
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 6bd6539edfd490c4990eb2ce54d87945, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6bd6539edfd490c4990eb2ce54d87945, type: 3}
 --- !u!1 &1012551999
 GameObject:
   m_ObjectHideFlags: 0
@@ -15230,7 +15368,7 @@ MonoBehaviour:
   - {fileID: 788792380}
   - {fileID: 1787946307}
   - {fileID: 1535049071}
-  _waitTimeOnFloor: 1.5
+  _waitTimeOnFloor: 5
 --- !u!65 &1392180820844673927
 BoxCollider:
   m_ObjectHideFlags: 0
