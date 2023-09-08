@@ -33,7 +33,7 @@ public class SwitchController : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Name();
+            RemoveParent();
         }
     }
 
@@ -45,11 +45,11 @@ public class SwitchController : MonoBehaviour
             _lift.Activate();
             BoxCollider col = GetComponent<BoxCollider>();
             Destroy(col);
-            Name();
+            RemoveParent();
         }
     }
 
-    private void Name()
+    private void RemoveParent()
     {
         UIManager.Instance.ActivateInteractText(false);
         InputManager.Instance.AssignSwitch(null);

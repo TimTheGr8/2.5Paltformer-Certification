@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     private float _gravity = 1.3f;
     [SerializeField]
     private float _jumpHeight = 20.0f;
+    [SerializeField]
+    private float _rollOffset = 12.56f;
 
     private CharacterController _controller;
     private Animator _anim;
@@ -23,6 +25,8 @@ public class Player : MonoBehaviour
     private float _yRotation = 0;
     private bool _jumping = true;
     private bool _onLedge = false;
+    private bool _rolling = false;
+    private float _rollWalk = 0;
     private Ledge _activeLedge;
 
     void Start()
@@ -69,7 +73,7 @@ public class Player : MonoBehaviour
 
     public void Jump()
     {
-        if (_controller.isGrounded)
+        if (_controller.isGrounded && !_rolling)
         {
             _yVelocity = _jumpHeight;
         }
@@ -77,12 +81,21 @@ public class Player : MonoBehaviour
 
     public void SetWalk(float walk)
     {
-        _walk = walk;
-        if (walk == 1)
-            _yRotation = 0;
-        if (walk == -1)
-            _yRotation = 180;
-        _anim.SetFloat("Speed", Mathf.Abs(_walk));
+        _rollWalk = walk;
+
+        if (!_rolling)
+        {
+            _walk = walk;
+            if (walk == 1)
+            {
+                _yRotation = 0;
+            }
+            if (walk == -1)
+            {
+                _yRotation = 180;
+            }
+            _anim.SetFloat("Speed", Mathf.Abs(_walk));
+        }
     }
 
     public void GrabLedge(Vector3 handPosition, Ledge currentLedge)
@@ -107,6 +120,24 @@ public class Player : MonoBehaviour
         _anim.SetBool("LedgeGrab", false);
         _onLedge = false;
         _controller.enabled = true;
+    }
+
+    public void Roll()
+    {
+        if(_controller.isGrounded && !_jumping)
+        {
+            _rolling = true;
+            _anim.SetTrigger("Roll");
+        }
+    }
+
+    public void RollComplete()
+    {
+        _rolling = false;
+        /////////////////// Fix this to work with user holding button during the roll.\\\\\\\\\\\\\\\\\\\
+        //_walk = 0;
+        SetWalk(_rollWalk);
+        //_anim.SetFloat("Speed", Mathf.Abs(_walk));
     }
 
     public void AdjustScore(int score)

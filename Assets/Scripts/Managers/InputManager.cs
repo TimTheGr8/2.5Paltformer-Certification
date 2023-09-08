@@ -47,6 +47,12 @@ public class InputManager : MonoBehaviour
         _inputs.Player.Jump.performed += Jump_performed;
         _inputs.Player.ClimbLedge.performed += ClimbLedge_performed;
         _inputs.Player.Interact.performed += Interact_performed;
+        _inputs.Player.Roll.performed += Roll_performed;
+    }
+
+    private void Roll_performed(InputAction.CallbackContext context)
+    {
+        _player.Roll();
     }
 
     private void Interact_performed(InputAction.CallbackContext context)
