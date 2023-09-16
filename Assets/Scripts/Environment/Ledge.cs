@@ -8,6 +8,8 @@ public class Ledge : MonoBehaviour
     private Transform _handPosition;
     [SerializeField]
     private Transform _standPosition;
+    [SerializeField]
+    private bool _ladderEdge = false;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -16,6 +18,9 @@ public class Ledge : MonoBehaviour
             Player player = other.GetComponentInParent<Player>();
             if(player != null)
             {
+                if (_ladderEdge)
+                    player.LadderInteraction();
+
                 player.GrabLedge(_handPosition.position, this);
             }
         }

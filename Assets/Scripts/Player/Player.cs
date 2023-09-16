@@ -14,6 +14,10 @@ public class Player : MonoBehaviour
     private float _jumpHeight = 20.0f;
     [SerializeField]
     private float _rollOffset = 12.56f;
+    [SerializeField]
+    private InputManager _inputManager;
+    [SerializeField]
+    private float _animPauseTime = 0.15f;
 
     private CharacterController _controller;
     private Animator _anim;
@@ -28,6 +32,8 @@ public class Player : MonoBehaviour
     private bool _rolling = false;
     private float _rollWalk = 0;
     private Ledge _activeLedge;
+    [SerializeField]
+    private bool _onLadder = false;
 
     void Start()
     {
@@ -41,7 +47,10 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        CalculateMovement();
+        if(!_onLadder && !_onLedge)
+            CalculateMovement();
+        if (_onLadder)
+            CalculateLadderMovement();
     }
 
     private void CalculateMovement()
@@ -73,7 +82,7 @@ public class Player : MonoBehaviour
 
     public void Jump()
     {
-        if (_controller.isGrounded && !_rolling)
+        if (_controller.isGrounded)
         {
             _yVelocity = _jumpHeight;
         }
@@ -141,5 +150,48 @@ public class Player : MonoBehaviour
     {
         _score += score;
         UIManager.Instance.UpdateScoreText(_score);
+    }
+
+    public void LadderInteraction()
+    {
+        _onLadder = !_onLadder;
+        if (_onLadder)
+        {
+            _inputManager.EnableLadderMap();
+            StartCoroutine(PauseAnimator());
+        }
+        else
+        {
+            _inputManager.EnablePlayerMap();
+            _anim.speed = 1;
+        }
+
+        _anim.SetBool("OnLadder", _onLadder);
+    }
+
+    public void SetClimb(float direction)
+    {
+        _walk = direction;
+        _anim.SetFloat("Climb", _walk);
+
+        if (_walk != 0)
+            _anim.speed = 2;
+        else
+            _anim.speed = 0;
+    }
+
+    private void CalculateLadderMovement()
+    {
+        _direction = new Vector3(0, _walk, 0);
+        _velocity = _direction * _speed;
+
+        _controller.Move(_velocity * Time.deltaTime);
+    }
+
+    IEnumerator PauseAnimator()
+    {
+
+        yield return new WaitForSeconds(_animPauseTime);
+        _anim.speed = 0;
     }
 }

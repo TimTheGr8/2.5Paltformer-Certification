@@ -22,6 +22,7 @@ public class InputManager : MonoBehaviour
 
     private PlayerInputs _inputs;
     private GameObject _switch;
+    private GameObject _ladder;
 
     private void Awake()
     {
@@ -39,6 +40,11 @@ public class InputManager : MonoBehaviour
         _switch = controller;
     }
 
+    public void AsssignLadder(GameObject ladder)
+    {
+        _ladder = ladder;
+    }
+
     private void InitializeInputs()
     {
         _inputs.Player.Enable();
@@ -48,13 +54,32 @@ public class InputManager : MonoBehaviour
         _inputs.Player.ClimbLedge.performed += ClimbLedge_performed;
         _inputs.Player.Interact.performed += Interact_performed;
         _inputs.Player.Roll.performed += Roll_performed;
+
+        _inputs.Ladder.Climb.performed += Climb_performed;
+        _inputs.Ladder.Climb.canceled += Climb_canceled;
+        _inputs.Ladder.Interact.performed += LadderInteract_performed;
+    }
+
+    private void LadderInteract_performed(InputAction.CallbackContext context)
+    {
+        _player.LadderInteraction();
+    }
+
+    private void Climb_canceled(InputAction.CallbackContext context)
+    {
+        _player.SetClimb(0);
+    }
+
+    private void Climb_performed(InputAction.CallbackContext context)
+    {
+        _player.SetClimb(context.ReadValue<float>());
     }
 
     private void Roll_performed(InputAction.CallbackContext context)
     {
         _player.Roll();
     }
-
+    
     private void Interact_performed(InputAction.CallbackContext context)
     {
         if (_switch != null)
@@ -63,8 +88,11 @@ public class InputManager : MonoBehaviour
             if(controller != null)
                 controller.ActivateLift();
         }
-        else
-            return;
+
+        if(_ladder != null)
+        {
+            _player.LadderInteraction();
+        }
     }
 
     private void ClimbLedge_performed(InputAction.CallbackContext context)
@@ -85,5 +113,17 @@ public class InputManager : MonoBehaviour
     private void Move_performed(InputAction.CallbackContext context)
     {
         _player.SetWalk(context.ReadValue<float>());
+    }
+
+    public void EnablePlayerMap()
+    {
+        _inputs.Ladder.Disable();
+        _inputs.Player.Enable();
+    }
+
+    public void EnableLadderMap()
+    {
+        _inputs.Player.Disable();
+        _inputs.Ladder.Enable();
     }
 }
