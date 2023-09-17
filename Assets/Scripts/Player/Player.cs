@@ -32,7 +32,6 @@ public class Player : MonoBehaviour
     private bool _rolling = false;
     private float _rollWalk = 0;
     private Ledge _activeLedge;
-    [SerializeField]
     private bool _onLadder = false;
 
     void Start()
@@ -55,6 +54,7 @@ public class Player : MonoBehaviour
 
     private void CalculateMovement()
     {
+        Debug.Log(_controller.isGrounded);
         if (!_controller.isGrounded)
         {
             _yVelocity -= _gravity;
