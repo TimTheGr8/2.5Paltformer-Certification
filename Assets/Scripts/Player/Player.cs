@@ -54,14 +54,12 @@ public class Player : MonoBehaviour
 
     private void CalculateMovement()
     {
-        Debug.Log(_controller.isGrounded);
         if (!_controller.isGrounded)
         {
             _yVelocity -= _gravity;
             if (!_jumping)
             {
                 _jumping = true;
-                _anim.SetBool("Jumping", _jumping);
             }
         }
 
@@ -85,6 +83,10 @@ public class Player : MonoBehaviour
         if (_controller.isGrounded)
         {
             _yVelocity = _jumpHeight;
+            if (!_jumping)
+            {
+                _anim.SetBool("Jumping", true);
+            }
         }
     }
 
